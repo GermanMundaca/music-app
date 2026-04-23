@@ -1,0 +1,16 @@
+# dependencias
+node_modules/
+
+# variables de entorno
+.env
+
+# builds frontend
+dist/
+build/
+
+# logs
+npm-debug.log*
+
+# sistema
+.DS_Store
+
