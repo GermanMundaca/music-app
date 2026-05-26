@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getSongs } from './services/songsApi';
+import SongCard from './components/SongCard';
 
 function App() {
   const [songs, setSongs] = useState([]);
@@ -14,15 +15,14 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <h1>Music App</h1>
 
-      {songs.map((song) => (
-        <div key={song.id}>
-          <h2>{song.title}</h2>
-          <p>{song.artist}</p>
-        </div>
-      ))}
+      <div className="songs-grid">
+        {songs.map((song) => (
+          <SongCard key={song.id} song={song} />
+        ))}
+      </div>
     </div>
   );
 }
