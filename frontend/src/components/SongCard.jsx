@@ -1,4 +1,4 @@
-function SongCard({ song }) {
+function SongCard({ song, onDelete }) {
   return (
     <div className="song-card">
       <img
@@ -19,6 +19,12 @@ function SongCard({ song }) {
         >
           Ver en YouTube
         </a>
+        <button 
+        onClick={()=> onDelete(song.id)} 
+        className="delete-btn"
+        >
+        Eliminar
+        </button>
       </div>
     </div>
   );

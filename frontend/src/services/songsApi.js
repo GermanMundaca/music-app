@@ -34,4 +34,22 @@ export const createSong = async(songData) =>{
   } catch (error) {
     console.error(error);
   }
+
+};
+//delete
+export const deleteSong = async(id)=>{
+try {
+  // Concatenamos el ID a la URL para que el backend sepa cuál borrar (Ej: /api/songs/5)
+  const response = await fetch('${API_URL}/${id}',{
+    method: 'DELETE',
+  });
+
+  if(!response.ok){
+    throw new error('error al eliminar cancion');
+  }
+  return await response.json();
+} catch (error) {
+  console.error(error);
 }
+
+};
