@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import { getSongs } from './services/songsApi';
+import { getSongs, createSong } from './services/songsApi';
+
 import SongCard from './components/SongCard';
+import SongForm from './components/SongForm';
 
 function App() {
   const [songs, setSongs] = useState([]);
@@ -14,9 +16,17 @@ function App() {
     loadSongs();
   }, []);
 
+  const handleAddSong = async (songData) => {
+    const newSong = await createSong(songData);
+
+    setSongs([...songs, newSong]);
+  };
+
   return (
     <div className="container">
       <h1>Music App</h1>
+
+        <SongForm onAddSong={handleAddSong} />
 
       <div className="songs-grid">
         {songs.map((song) => (
