@@ -63,7 +63,7 @@ body {
   padding: 1rem;
   border: none;
   border-radius: 10px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   color: white;
 }
 
@@ -80,6 +80,7 @@ body {
 .song-form button:hover {
   opacity: 0.8;
 }
+
 /*BOTON DELETE*/
 .delete-btn {
   width: 100%;
@@ -99,4 +100,20 @@ body {
 
 .delete-btn:hover {
   opacity: 0.85;
+}
+
+/*LOADING AND ERRORS*/
+.loading,
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 50vh;
+
+  font-size: 1.2rem;
+}
+
+.error {
+  color: #ff6b6b;
 }
