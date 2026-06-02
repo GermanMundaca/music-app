@@ -3,7 +3,7 @@ function SongCard({ song, onDelete }) {
     <div className="song-card">
       <img
         src={`https://img.youtube.com/vi/${
-          song.youtube_url.split('v=')[1]
+          song.youtube_url.split("v=")[1]
         }/hqdefault.jpg`}
         alt={song.title}
       />
@@ -12,18 +12,11 @@ function SongCard({ song, onDelete }) {
         <h2>{song.title}</h2>
         <p>{song.artist}</p>
 
-        <a
-          href={song.youtube_url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={song.youtube_url} target="_blank" rel="noopener noreferrer">
           Ver en YouTube
         </a>
-        <button 
-        onClick={()=> onDelete(song.id)} 
-        className="delete-btn"
-        >
-        Eliminar
+        <button onClick={() => onDelete(song.id)} className="delete-btn">
+          Eliminar
         </button>
       </div>
     </div>
