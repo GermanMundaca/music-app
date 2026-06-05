@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
-import { getSongs, createSong, deleteSong } from "./services/songsApi";
+import {
+  getSongs,
+  createSong,
+  deleteSong,
+  updateSong,
+} from "./services/songsApi";
 
 import SongCard from "./components/SongCard";
 import SongForm from "./components/SongForm";
 
 function App() {
+  //Estados
   const [songs, setSongs] = useState([]);
+  const [songToEdit, setSongToEdit] = useState(null); //null=> no estamos editando
   const [loading, setLoading] = useState(true); //true=>cargando false=>termino
   const [error, setError] = useState(null); //null=>todo bien string=>error
-  //carga canciones
+  //cargar canciones
   useEffect(() => {
     const loadSongs = async () => {
       try {
@@ -28,16 +35,28 @@ function App() {
 
     loadSongs();
   }, []);
-  //creacion canciones
+  //Crear canciones
   const handleAddSong = async (songData) => {
     const newSong = await createSong(songData); //los datos viajan hacia el backend a través del servicio
 
     setSongs([...songs, newSong]); // se actualiza la pantalla con lo que devolvió el backend
   };
-  //eliminacion canciones
+  //Eliminar canciones
   const handleDeleteSong = async (id) => {
     await deleteSong(id);
     setSongs(songs.filter((song) => song.id !== id));
+  };
+  //UPDATE
+  const handleEditSong = async (song) => {
+    setSongToEdit(song);
+  };
+
+  const handleUpdateSong = async (id, songData) => {
+    const updatedSong = await updateSong(id, songData);
+
+    setSongs(songs.map((song) => (song.id === id ? updatedSong : song)));
+
+    setSongToEdit(null);
   };
   //=> no cargaron las canciones
   if (loading) {
@@ -51,11 +70,20 @@ function App() {
     <div className="container">
       <h1>Music App</h1>
 
-      <SongForm onAddSong={handleAddSong} />
+      <SongForm
+        onAddSong={handleAddSong}
+        onUpdateSong={handleUpdateSong}
+        songToEdit={songToEdit}
+      />
 
       <div className="songs-grid">
         {songs.map((song) => (
-          <SongCard key={song.id} song={song} onDelete={handleDeleteSong} />
+          <SongCard
+            key={song.id}
+            song={song}
+            onDelete={handleDeleteSong}
+            onEdit={handleEditSong}
+          />
         ))}
       </div>
     </div>
