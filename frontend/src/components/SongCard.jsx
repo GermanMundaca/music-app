@@ -1,4 +1,4 @@
-function SongCard({ song, onDelete }) {
+function SongCard({ song, onDelete, onEdit }) {
   return (
     <div className="song-card">
       <img
@@ -17,6 +17,9 @@ function SongCard({ song, onDelete }) {
         </a>
         <button onClick={() => onDelete(song.id)} className="delete-btn">
           Eliminar
+        </button>
+        <button onClick={() => onEdit(song)} className="delete-btn">
+          Editar
         </button>
       </div>
     </div>

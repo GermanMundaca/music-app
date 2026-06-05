@@ -50,3 +50,23 @@ export const deleteSong = async (id) => {
     console.error(error);
   }
 };
+
+//UPDATE
+export const updateSong = async(id, songData) =>{
+  try {
+    const response = await fetch("${API_URL}/${id}", {
+      method: "UPDATE",
+      headers: {'Content-Type' : 'Application/json',
+      },
+      body: JSON.stringify(songData), //Convertimos nuestros paramos a texto plano.
+    });
+     if (!response.ok) { //Control de errores
+      throw new Error('Error al actualizar canción');
+    }
+
+    return await response.json();
+  } catch (error) { //manejo de errores
+    console.error(error);
+    throw error;
+  }
+};

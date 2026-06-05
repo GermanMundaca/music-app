@@ -1,6 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function SongForm({ onAddSong }) {
+function SongForm({ onAddSong, onUpdateSong, songToEdit }) {
+  //Actualizamos si cambia songToEdit
+  useEffect(() => {
+    if (songToEdit) {
+      setFormData({
+        title: songToEdit.title,
+        artist: songToEdit.artist,
+        youtube_url: songToEdit.youtube_url,
+      });
+    }
+  }, [songToEdit]);
+
   //Objeto
   const [formData, setFormData] = useState({
     //almacenamos estado
@@ -18,8 +29,12 @@ function SongForm({ onAddSong }) {
   //al enviar
   const handleSubmit = async (e) => {
     e.preventDefault(); //Evita que la página web se recargue
-
-    await onAddSong(formData); // Se envía el objeto completo al componente padre; el código espera a que termine
+    if (songToEdit) {
+      await onUpdateSong(songToEdit.id, formData);
+    } else {
+      await onAddSong(formData);
+    }
+    //await onAddSong(formData); // Se envía el objeto completo al componente padre; el código espera a que termine
 
     setFormData({
       //limpia el estado
@@ -55,7 +70,9 @@ function SongForm({ onAddSong }) {
         onChange={handleChange}
       />
 
-      <button type="submit">Agregar canción</button>
+      <button type="submit">
+        {songToEdit ? "Actualizar canción" : "Agregar canción"}
+      </button>
     </form>
   );
 }
