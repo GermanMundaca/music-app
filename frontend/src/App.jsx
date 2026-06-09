@@ -81,15 +81,6 @@ function App() {
       <p className="subtitle">Gestiona tu colección musical</p>
       </div>
       
-      <Collapsible>
-      <SongForm
-        onAddSong={handleAddSong}
-        onUpdateSong={handleUpdateSong}
-        songToEdit={songToEdit}
-      />
-      </Collapsible>
-      
-      
       <div className="search-container">
         <input
           type="text"
@@ -99,6 +90,14 @@ function App() {
           className="search-input"
         />
       </div>
+      <Collapsible>
+      <SongForm
+        onAddSong={handleAddSong}
+        onUpdateSong={handleUpdateSong}
+        songToEdit={songToEdit}
+      />
+      </Collapsible>
+      
       <div className="songs-grid">
         {filteredSongs.map((song) => (
           <SongCard
