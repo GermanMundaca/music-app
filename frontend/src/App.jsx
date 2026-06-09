@@ -8,7 +8,8 @@ import {
 
 import SongCard from "./components/SongCard";
 import SongForm from "./components/SongForm";
-
+import collapsible from "./components/Collapsible";
+import Collapsible from "./components/Collapsible";
 function App() {
   //Estados
   const [songs, setSongs] = useState([]);
@@ -76,12 +77,15 @@ function App() {
   return (
     <div className="container">
       <h1>Music App</h1>
-
+      <Collapsible>
       <SongForm
         onAddSong={handleAddSong}
         onUpdateSong={handleUpdateSong}
         songToEdit={songToEdit}
       />
+      </Collapsible>
+      
+      
       <div className="search-container">
         <input
           type="text"
