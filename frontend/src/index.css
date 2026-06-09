@@ -8,7 +8,22 @@ body {
 .container {
   padding: 2rem;
 }
+/*HEADER*/
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
 
+.title {
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+}
+
+.subtitle {
+  color: #bbb;
+  margin-bottom: 0.5rem;
+}
+/*CARDS*/
 .songs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

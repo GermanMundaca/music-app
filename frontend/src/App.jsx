@@ -76,7 +76,11 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Music App</h1>
+      <div className="header">
+      <h1 className="title">Music App</h1>
+      <p className="subtitle">Gestiona tu colección musical</p>
+      </div>
+      
       <Collapsible>
       <SongForm
         onAddSong={handleAddSong}
