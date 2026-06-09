@@ -117,3 +117,32 @@ body {
 .error {
   color: #ff6b6b;
 }
+/*SEARCH*/
+.search-container {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.8rem 1rem;
+
+  border: 1px solid #333;
+  border-radius: 8px;
+
+  background-color: #1a1a1a;
+  color: white;
+
+  font-size: 1rem;
+
+  transition: all 0.3s ease;
+}
+.search-input:focus {
+  outline: none;
+
+  border-color: #646cff;
+
+  box-shadow: 0 0 10px rgba(100, 108, 255, 0.4);
+}

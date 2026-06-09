@@ -15,6 +15,7 @@ function App() {
   const [songToEdit, setSongToEdit] = useState(null); //null=> no estamos editando
   const [loading, setLoading] = useState(true); //true=>cargando false=>termino
   const [error, setError] = useState(null); //null=>todo bien string=>error
+  const [searchTerm, setSearchTerm] = useState(""); //Estado Busqueda Canciones
   //cargar canciones
   useEffect(() => {
     const loadSongs = async () => {
@@ -66,6 +67,12 @@ function App() {
   if (error) {
     return <div className="error">{error}</div>;
   }
+
+  //Crear Lista Filtrada
+  const filteredSongs = songs.filter((song) =>
+    song.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
   return (
     <div className="container">
       <h1>Music App</h1>
@@ -75,9 +82,17 @@ function App() {
         onUpdateSong={handleUpdateSong}
         songToEdit={songToEdit}
       />
-
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="🔍 Buscar canción..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+        />
+      </div>
       <div className="songs-grid">
-        {songs.map((song) => (
+        {filteredSongs.map((song) => (
           <SongCard
             key={song.id}
             song={song}
