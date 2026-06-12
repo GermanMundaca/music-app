@@ -38,12 +38,12 @@ export const createSong = async (songData) => {
 export const deleteSong = async (id) => {
   try {
     // Concatenamos el ID a la URL para que el backend sepa cuál borrar (Ej: /api/songs/5)
-    const response = await fetch("${API_URL}/${id}", {
+    const response = await fetch(`${API_URL}/${id}`, {
       method: "DELETE",
     });
 
     if (!response.ok) {
-      throw new error("error al eliminar cancion");
+      throw new Error("error al eliminar cancion");
     }
     return await response.json();
   } catch (error) {
@@ -54,8 +54,8 @@ export const deleteSong = async (id) => {
 //UPDATE
 export const updateSong = async(id, songData) =>{
   try {
-    const response = await fetch("${API_URL}/${id}", {
-      method: "UPDATE",
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: "PUT",
       headers: {'Content-Type' : 'Application/json',
       },
       body: JSON.stringify(songData), //Convertimos nuestros paramos a texto plano.

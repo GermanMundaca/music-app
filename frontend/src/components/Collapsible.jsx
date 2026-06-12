@@ -1,16 +1,18 @@
-import { useState } from "react";
-
-function Collapsible({children}) {
-     const [isOpen, setIsOpen] = useState(false);
+function Collapsible({ isOpen, onToggle, children }) {
   return (
     <div className="container-collap">
-      <button className="btn-collap" onClick={() => setIsOpen(!isOpen)} >
-        {isOpen ? "🔼 Ocultar Contenido" : "🔽 Agrega una cancion"}
+      <button
+        className="btn-collap"
+        onClick={onToggle}
+      >
+        {isOpen
+          ? "🔼 Ocultar Contenido"
+          : "🔽 Agrega una canción"}
       </button>
-      {isOpen && (
-        children
-      )}
+
+      {isOpen && children}
     </div>
   );
 }
+
 export default Collapsible;

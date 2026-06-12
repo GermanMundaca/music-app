@@ -8,7 +8,6 @@ import {
 
 import SongCard from "./components/SongCard";
 import SongForm from "./components/SongForm";
-import collapsible from "./components/Collapsible";
 import Collapsible from "./components/Collapsible";
 function App() {
   //Estados
@@ -17,6 +16,7 @@ function App() {
   const [loading, setLoading] = useState(true); //true=>cargando false=>termino
   const [error, setError] = useState(null); //null=>todo bien string=>error
   const [searchTerm, setSearchTerm] = useState(""); //Estado Busqueda Canciones
+  const [isFormOpen, setIsFormOpen] = useState(false); //Collapsible
   //cargar canciones
   useEffect(() => {
     const loadSongs = async () => {
@@ -51,6 +51,7 @@ function App() {
   //UPDATE
   const handleEditSong = async (song) => {
     setSongToEdit(song);
+    setIsFormOpen(true);
   };
 
   const handleUpdateSong = async (id, songData) => {
@@ -90,7 +91,8 @@ function App() {
           className="search-input"
         />
       </div>
-      <Collapsible>
+      <Collapsible isOpen={isFormOpen}
+  onToggle={() => setIsFormOpen(!isFormOpen)}>
       <SongForm
         onAddSong={handleAddSong}
         onUpdateSong={handleUpdateSong}
