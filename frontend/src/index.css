@@ -107,6 +107,11 @@ body {
 }
 
 /*BOTON DELETE*/
+.container-delete-btn{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
 .delete-btn {
   width: 100%;
   margin-top: 1rem;
@@ -114,13 +119,23 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  background: #dc3545;
+  background: #ee263a;
   color: white;
   transition: 0.3s;
 }
-
+.edit-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #3329f4;
+  color: white;
+  transition: 0.3s;
+}
 .delete-btn:hover {
-  opacity: 0.85;
+  opacity: 0.5;
 }
 
 /*LOADING AND ERRORS*/

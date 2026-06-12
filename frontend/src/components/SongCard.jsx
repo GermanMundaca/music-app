@@ -15,12 +15,15 @@ function SongCard({ song, onDelete, onEdit }) {
         <a href={song.youtube_url} target="_blank" rel="noopener noreferrer">
           Ver en YouTube
         </a>
+        <div className="container-delete-btn">
         <button onClick={() => onDelete(song.id)} className="delete-btn">
-          Eliminar
+          🗑️ Eliminar
         </button>
-        <button onClick={() => onEdit(song)} className="delete-btn">
-          Editar
+        <button onClick={() => onEdit(song)} className="edit-btn">
+          ✏️ Editar
         </button>
+        </div>
+        
       </div>
     </div>
   );
