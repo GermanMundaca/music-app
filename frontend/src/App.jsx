@@ -76,15 +76,10 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Music App</h1>
-      <Collapsible>
-      <SongForm
-        onAddSong={handleAddSong}
-        onUpdateSong={handleUpdateSong}
-        songToEdit={songToEdit}
-      />
-      </Collapsible>
-      
+      <div className="header">
+      <h1 className="title">Music App</h1>
+      <p className="subtitle">Gestiona tu colección musical</p>
+      </div>
       
       <div className="search-container">
         <input
@@ -95,6 +90,14 @@ function App() {
           className="search-input"
         />
       </div>
+      <Collapsible>
+      <SongForm
+        onAddSong={handleAddSong}
+        onUpdateSong={handleUpdateSong}
+        songToEdit={songToEdit}
+      />
+      </Collapsible>
+      
       <div className="songs-grid">
         {filteredSongs.map((song) => (
           <SongCard
